@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	%include('shared/head.html')
+	%include('shared/nav.html')
+	<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
+		%for food in stock_list:
+			<div class="row">
+				<div class="card" style="background-color:#ADC4D6;">
+					<div class="card-content white-text">
+						<span class="card-title">{{food.food_item}}</span>
+						<p>in sock: {{food.stock}}</p>
+						<p>Sold items: {{food.sold}}</p>
+					</div>
+					<div class="card-action" style="background-color:#537299">
+						<a href="#"><i class="material-icons left">attach_money</i>Link</a>
+					</div>
+					<div class="card-action" style="background-color:#537299">
+						<a href="#"><i class="material-icons left">file_download</i>Re-Stock</a>
+					</div>
+				</div>
+			</div>
+		%end
+	</div>	
+</html>

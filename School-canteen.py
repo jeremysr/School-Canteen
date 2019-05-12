@@ -26,5 +26,12 @@ food = [
 def index():
     pass
 
+#stock info page
+@route('/stockinfo')
+@view('stockinfo')
+def stock_info():
+    data = dict (stock_list = food)
+    return data    
+
 
 run(host='0.0.0.0', port = 8080, reloader = True, debug = True)
