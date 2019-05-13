@@ -31,7 +31,19 @@ def index():
 @view('stockinfo')
 def stock_info():
     data = dict (stock_list = food)
-    return data    
+    return data
+
+#re-stock food item
+@route('/re-stock-item/<food_id>')
+@view('re-stock-item')
+def re_stock_item(food_id):
+    food_id = int(food_id)
+    found_food = None
+    for fooditem in food:
+        if fooditem.id == food_id:
+            found_food = fooditem
+    data = dict (fooditem = found_food)
+    return data
 
 
 run(host='0.0.0.0', port = 8080, reloader = True, debug = True)
