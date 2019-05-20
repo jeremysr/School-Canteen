@@ -4,7 +4,20 @@
 	%include('shared/nav.html')
 	<body>
 		<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
-			
+			<h4>Re-stock Page</h4>
+			<p>Adjust stock levels for:<b> {{fooditem.food_item}}</b></p>
+			<p>current stock level: <b>{{fooditem.stock}}</b></p>
+			<div class="row">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="number" type="number" class="validate">
+							<label for="number">Re-stock number</label>
+							<span class="helper-text">adjust the level of stock</span>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
