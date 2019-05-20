@@ -45,5 +45,11 @@ def re_stock_item(food_id):
     data = dict (fooditem = found_food)
     return data
 
+#re-stock-success page
+@route('/re-stock-success/<food_id>')
+@view('re-stock-success')
+def re_stock_success(food_id):
+    pass
+
 
 run(host='0.0.0.0', port = 8080, reloader = True, debug = True)
