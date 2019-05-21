@@ -46,10 +46,27 @@ def re_stock_item(food_id):
     return data
 
 #re-stock-success page
-@route('/re-stock-success/<food_id>')
+@route('/re-stock-success/<food_id>', method = "POST")
 @view('re-stock-success')
 def re_stock_success(food_id):
-    pass
+    food_id = int(food_id)
+    restock = request.forms.get('inp_re_stock')
+    
+    try:
+        resto = int(restock)
+    except ValueError:
+        resto = 0
+        
+    found_food = None
+    for fooditem in food:
+        if fooditem.id == food_id:
+            found_food = fooditem
+        data = dict (fooditem = found_food)
+    found_food.stock = found_food.stock + resto
+    return data
+    
+        
+    
 
 
 run(host='0.0.0.0', port = 8080, reloader = True, debug = True)

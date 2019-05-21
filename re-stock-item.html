@@ -8,14 +8,16 @@
 			<p>Adjust stock levels for:<b> {{fooditem.food_item}}</b></p>
 			<p>current stock level: <b>{{fooditem.stock}}</b></p>
 			<div class="row">
-				<form class="col s12">
+				<form class="col s12" action = "/re-stock-success/{{fooditem.id}}" method = "post">
 					<div class="row">
-						<div class="input-field col s12">
-							<input id="number" type="number" class="validate">
-							<label for="number">Re-stock number</label>
-							<span class="helper-text">adjust the level of stock</span>
+						<div class="input-field col s12" style="width:40%;">
+							<p>Input re-stock quantity in the feild below:</p>
+							<input style="background-color:#F1F6Fa;" id="re_stock" name="inp_re_stock" type="number" class="validate">
+							<label for="number"></label>
+							<span class="helper-text">adjust the level of stock</span> 
 						</div>
 					</div>
+					<button class="btn waves-effect waves-light" style="background-color: #333;" type ="submit" name="action" >Submit</button>
 				</form>
 			</div>
 		</div>
