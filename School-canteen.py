@@ -64,6 +64,12 @@ def re_stock_success(food_id):
         data = dict (fooditem = found_food)
     found_food.stock = found_food.stock + resto
     return data
+
+#new item page
+@route('/new-item')
+@view('new-item')
+def new_item():
+    pass
     
         
     
