@@ -4,9 +4,26 @@
 	%include('shared/nav.html')
 	<body>
 		<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
-		
+			<div class="row">
+				<form class="col s12" action = "/new-item-success" method = "post">
+					<div class="row">
+						<div class="input-field col s3">
+							<input placeholder="Placeholder" id="inp_food_item" name="food_item" type="text" class="validate">
+							<label for="inp_food_item">food item</label>
+						</div>
+						<div class="input-field col s3">
+							<input placeholder = "current stock" id="inp_stock" name = "stock" type= "number" class= "validate">
+							<label for="inp_stock">The current stock level</label>
+						</div>
+						<div class="input-field col s3">
+							<input placeholder = "set price" id="inp_price" name = "price" type= "number" class= "validate">
+							<label for="inp_price">Set the current price</label>
+						</div>
+					</div>
+					<button class="btn waves-effect waves-light" type ="submit" style="background-color: #333;" name="action">Submit</button>
+				</form>
+			</div>
 		</div>
-		
 	</body>
 	
 </html>

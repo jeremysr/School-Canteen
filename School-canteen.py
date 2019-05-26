@@ -70,6 +70,21 @@ def re_stock_success(food_id):
 @view('new-item')
 def new_item():
     pass
+
+#new item success page, notifys the user that the new addedd item was successful
+@route('/new-item-success', method ="POST")
+@view('new-item-success')
+def new_item_success():
+    
+    food_item = request.forms.get('food_item')
+    stock = request.forms.get('stock')
+    stock = int(stock)
+    price = request.forms.get('price')
+    price = int(price)
+    sold = 0
+    
+    new_item = FoodItem(food_item, stock, price, sold)
+    food.append(new_item)
     
         
     
