@@ -10,3 +10,5 @@ Ver2.0 add the page that displays the stock levels for the food, cards, images.
 Ver2.1 add re-stock feature
 
 Ver2.2 add new item feature
+
+Ver2.3 Fixing bugs from ver2.1 - 2.2, finalizing ver2
