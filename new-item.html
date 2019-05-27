@@ -4,11 +4,14 @@
 	%include('shared/nav.html')
 	<body>
 		<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
+			<a href="/stockinfo" class="btn waves-effect waves-light" style="background-color: #333;"><i class="material-icons left">arrow_back</i>Cancel</a>
+			<h5>Add a new item to the menu</h5>
+			<p>all you need to fill in is the item of food, how much you have in stock and the price you plan to sell at.</p>
 			<div class="row">
 				<form class="col s12" action = "/new-item-success" method = "post">
 					<div class="row">
 						<div class="input-field col s3">
-							<input placeholder="Placeholder" id="inp_food_item" name="food_item" type="text" class="validate">
+							<input placeholder="Surstromming" id="inp_food_item" name="food_item" type="text" class="validate">
 							<label for="inp_food_item">food item</label>
 						</div>
 						<div class="input-field col s3">

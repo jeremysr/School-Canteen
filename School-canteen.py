@@ -52,6 +52,7 @@ def re_stock_success(food_id):
     food_id = int(food_id)
     restock = request.forms.get('inp_re_stock')
     
+    #to prevent an error if the user inputs something other than an int
     try:
         resto = int(restock)
     except ValueError:
@@ -76,17 +77,20 @@ def new_item():
 @view('new-item-success')
 def new_item_success():
     
-    food_item = request.forms.get('food_item')
-    stock = request.forms.get('stock')
-    stock = int(stock)
-    price = request.forms.get('price')
-    price = int(price)
-    sold = 0
+    #try/except ValueError to prevent internal server error from wrong input
+    try:
+        food_item = request.forms.get('food_item')
+        stock = request.forms.get('stock')
+        stock = int(stock) #this was a fix to a value error, website was taking user input as a str.
+        price = request.forms.get('price')
+        price = int(price)
+        sold = 0
     
-    new_item = FoodItem(food_item, stock, price, sold)
-    food.append(new_item)
-    
+        new_item = FoodItem(food_item, stock, price, sold)
+        food.append(new_item)
         
+    except ValueError:
+        pass
     
 
 
