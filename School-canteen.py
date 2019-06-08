@@ -89,6 +89,11 @@ def new_item_success():
         price = request.forms.get('price')
         price = int(price)
         sold = 0
+        
+        if stock < 0: #these are added to prevent negitive values.
+            stock = 0
+        if price < 0:
+            price = 0
     
         new_item = FoodItem(food_item, stock, price, sold)
         food.append(new_item)
