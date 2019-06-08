@@ -54,9 +54,9 @@ def re_stock_success(food_id):
     
     #to prevent an error if the user inputs something other than an int
     try:
-        resto = int(restock)
+        resto = int(restock) #atempts to convert to an int
     except ValueError:
-        resto = 0
+        resto = 0   #sets to zero if a ValueError occurs 
         
     found_food = None
     for fooditem in food:
@@ -64,6 +64,10 @@ def re_stock_success(food_id):
             found_food = fooditem
         data = dict (fooditem = found_food)
     found_food.stock = found_food.stock + resto
+    
+    #added to prevent stock going into negitive values
+    if found_food.stock < 0:
+        found_food.stock = 0
     return data
 
 #new item page
@@ -81,7 +85,7 @@ def new_item_success():
     try:
         food_item = request.forms.get('food_item')
         stock = request.forms.get('stock')
-        stock = int(stock) #this was a fix to a value error, website was taking user input as a str.
+        stock = int(stock)
         price = request.forms.get('price')
         price = int(price)
         sold = 0
