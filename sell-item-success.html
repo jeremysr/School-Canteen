@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	%include('shared/head.html')
+	%include('shared/nav.html')
+	<body>
+		<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
+			<h5>Items sold successfully!</h5>
+			<p>New stock level for {{fooditem.food_item}}: <b>{{fooditem.stock}}</b></p>
+
+			<a href="/stockinfo" class="btn waves-effect waves-light" style="background-color: #333;"><i class="material-icons left">trending_up</i>stock info</a>
+		</div>
+	</body>
+</html>

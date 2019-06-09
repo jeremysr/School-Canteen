@@ -18,6 +18,9 @@ food = [
     FoodItem("Ham and cheese sandwich",4,4,0),
 ]
 
+
+
+
 #pages
 
 #index page
@@ -100,6 +103,55 @@ def new_item_success():
         
     except ValueError:
         pass
+
+#sell item page
+@route('/sell-item/<food_id>')
+@view('sell-item')
+def sell_item(food_id):
+    food_id = int(food_id)
+    found_food = None
+    for fooditem in food:
+        if fooditem.id == food_id:
+            found_food = fooditem
+    data = dict (fooditem = found_food)
+    return data
+
+#sell-item-success page
+@route('/sell-item-success/<food_id>', method = "POST")
+@view('sell-item-success')
+def sell_item_success(food_id):
+    food_id = int(food_id)
+    sell_amount = request.forms.get('inp_sell_item')
+    
+    #to prevent an error if the user inputs something other than an int
+    try:
+        sell_amount = int(sell_amount) #atempts to convert to an int
+    except ValueError:
+        sell_amount = 0   #sets to zero if a ValueError occurs 
+        
+    found_food = None
+    for fooditem in food:
+        if fooditem.id == food_id:
+            found_food = fooditem
+        data = dict (fooditem = found_food)
+        
+    max_able_to_sell = found_food.stock #max able to sell is calculated before stock is reduced, used later on.
+    found_food.stock = found_food.stock - sell_amount #reduces stock buy amount sold
+    
+    #added to prevent stock going into negitive values
+    if found_food.stock < 0:
+        found_food.stock = 0
+    
+    #If statment put in place to detect if user attempted to sell more stock than existed
+    if found_food.stock == 0:
+        found_food.sold = found_food.sold + max_able_to_sell #only counts the stock that was sold
+    else:
+        found_food.sold = found_food.sold + sell_amount #works as normal
+    return data
+
+
+    
+
     
 
 

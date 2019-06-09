@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	%include('shared/head.html')
+	%include('shared/nav.html')
+	<body>
+		<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
+			<a href="/stockinfo" class="btn waves-effect waves-light" style="background-color: #333;"><i class="material-icons left">arrow_back</i>Cancel</a>
+			<h4>Sell Item Page</h4>
+			<p>Item to be sold: <b>{{fooditem.food_item}}</b></p>
+			<p>current stock level: <b>{{fooditem.stock}}</b></p>
+			<div class="row">
+				<form class="col s12" action = "/sell-item-success/{{fooditem.id}}" method = "post">
+					<div class="row">
+						<div class="input-field col s12" style="width:40%;">
+							<p>Input quantity of {{fooditem.food_item}}(s) being sold in the feild below:</p>
+							<input style="background-color:#F1F6Fa;" id="sell_item" name="inp_sell_item" type="number" class="validate">
+							<label for="number"></label>
+							<span class="helper-text">quantity being sold</span> 
+						</div>
+					</div>
+					<button class="btn waves-effect waves-light" style="background-color: #333;" type ="submit" name="action" >Submit</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
