@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	%include('shared/head.html')
+	%include('shared/nav.html')
+	<body>
+		<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
+			<h5><b>Statistics</b></h5>
+			<p>This page is dedicated to displaying the statistics for the current sessions sales and stock levels, this page calculates the totals for food itemes sold and net profit.</p>
+			%total_profit = 0
+			%total_sold = 0
+			%most_popular_sold = 0
+			%most_popular = "N/A"
+			%for food in stock_list:
+				%total_profit = total_profit + food.sold * food.price
+				%total_sold = total_sold + food.sold
+				%if food.sold > most_popular_sold:
+					%most_popular_sold = food.sold
+					%most_popular = food.food_item
+				%end	
+			%end
+			<h6>Total net profit for this session: <b>${{total_profit}}.00</b></h6>
+			<h6>Total food items sold this session: <b>{{total_sold}} sales</b></h6>
+			<h6>Most popular food item this session: <b>{{most_popular}} with {{most_popular_sold}} sales!</b></h6>
+			<br>
+			<a href="/" class="btn waves-effect waves-light" style="background-color: #333;"><i class="material-icons left">home</i>Home</a>
+		</div>
+	</body>
+</html>

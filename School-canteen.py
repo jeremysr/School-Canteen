@@ -79,7 +79,7 @@ def re_stock_success(food_id):
 def new_item():
     pass
 
-#new item success page, notifys the user that the new addedd item was successful
+#new item success page
 @route('/new-item-success', method ="POST")
 @view('new-item-success')
 def new_item_success():
@@ -147,6 +147,13 @@ def sell_item_success(food_id):
         found_food.sold = found_food.sold + max_able_to_sell #only counts the stock that was sold
     else:
         found_food.sold = found_food.sold + sell_amount #works as normal
+    return data
+
+#stats page
+@route('/stats')
+@view('stats')
+def stats():
+    data = dict (stock_list = food)
     return data
 
 
