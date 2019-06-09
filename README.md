@@ -16,3 +16,5 @@ Ver2.3 Fixing bugs from ver2.1 - 2.2, finalizing ver2
 Ver3.0 Added sell feature
 
 Ver3.1 add statistics page
+
+Ver3.2 Fixing bugs and finishing off Ver3
