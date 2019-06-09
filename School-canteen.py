@@ -133,7 +133,6 @@ def sell_item_success(food_id):
     for fooditem in food:
         if fooditem.id == food_id:
             found_food = fooditem
-        data = dict (fooditem = found_food)
         
     max_able_to_sell = found_food.stock #max able to sell is calculated before stock is reduced, used later on.
     found_food.stock = found_food.stock - sell_amount #reduces stock buy amount sold
@@ -145,8 +144,14 @@ def sell_item_success(food_id):
     #If statment put in place to detect if user attempted to sell more stock than existed
     if found_food.stock == 0:
         found_food.sold = found_food.sold + max_able_to_sell #only counts the stock that was sold
+        if sell_amount == max_able_to_sell:
+            display_message = False
+        else:        
+            display_message = True
     else:
         found_food.sold = found_food.sold + sell_amount #works as normal
+        display_message = False
+    data = dict (fooditem = [found_food, display_message, max_able_to_sell])
     return data
 
 #stats page
