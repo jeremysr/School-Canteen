@@ -13,6 +13,9 @@
 						<p>In sock: {{food.stock}}</p>
 						<p>Price: ${{food.price}}.00</p>
 						<p>Sold items: {{food.sold}}</p>
+						%if food.stock == 0:
+							<p><b>WARNING: ITEM IS OUT OF STOCK</b></p>
+						%end
 						<a href="/re-stock-item/{{food.id}}" class="waves-effect waves-light btn" style="background-color: #333; margin-top:10px;"><i class="material-icons left">file_download</i>Re-stock</a>
 						%if food.stock == 0:
 							<a href="/sell-item/{{food.id}}" class="waves-effect waves-light btn disabled" style="background-color: #333; margin-top:10px;"><i class="material-icons left">add_shopping_cart</i>Take order</a>

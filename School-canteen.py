@@ -158,7 +158,19 @@ def sell_item_success(food_id):
 @route('/stats')
 @view('stats')
 def stats():
-    data = dict (stock_list = food)
+    #placeholder's for if stats page is checked before any sales
+    total_profit = 0
+    total_sold = 0
+    most_popular_sold = 0
+    most_popular = "N/A"
+    
+    for food_objects in food:
+        total_profit = total_profit + food_objects.sold * food_objects.price
+        total_sold = total_sold + food_objects.sold
+        if food_objects.sold > most_popular_sold:
+            most_popular_sold = food_objects.sold
+            most_popular = food_objects.food_item
+    data = dict (food_stats = [total_profit, total_sold, most_popular, most_popular_sold])
     return data
 
 

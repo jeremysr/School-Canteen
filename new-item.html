@@ -11,15 +11,15 @@
 				<form class="col s12" action = "/new-item-success" method = "post">
 					<div class="row">
 						<div class="input-field col s3">
-							<input placeholder="Surstromming" id="inp_food_item" name="food_item" type="text" class="validate">
+							<input placeholder="Surstromming" id="inp_food_item" name="food_item" type="text" class="validate" required>
 							<label for="inp_food_item">food item</label>
 						</div>
 						<div class="input-field col s3">
-							<input placeholder = "current stock" id="inp_stock" name = "stock" type= "number" class= "validate" min="0">
+							<input placeholder = "current stock" id="inp_stock" name = "stock" type= "number" class= "validate" min="0" required>
 							<label for="inp_stock">The current stock level</label>
 						</div>
 						<div class="input-field col s3">
-							<input placeholder = "set price" id="inp_price" name = "price" type= "number" class= "validate" min="1">
+							<input placeholder = "set price" id="inp_price" name = "price" type= "number" class= "validate" min="1" required>
 							<label for="inp_price">Set the current price</label>
 						</div>
 					</div>

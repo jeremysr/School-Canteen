@@ -12,8 +12,8 @@
 				<form class="col s12" action = "/sell-item-success/{{fooditem.id}}" method = "post">
 					<div class="row">
 						<div class="input-field col s12" style="width:40%;">
-							<p>Input quantity of {{fooditem.food_item}}(s) being sold in the feild below:</p>
-							<input style="background-color:#F1F6Fa;" id="sell_item" name="inp_sell_item" type="number" class="validate">
+							<p>Input quantity of {{fooditem.food_item}}(s) being sold in the field below:</p>
+							<input style="background-color:#F1F6Fa;" id="sell_item" name="inp_sell_item" type="number" class="validate" min="1" required>
 							<label for="number"></label>
 							<span class="helper-text">quantity being sold</span> 
 						</div>
