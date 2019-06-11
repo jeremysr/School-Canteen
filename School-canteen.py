@@ -125,29 +125,28 @@ def sell_item_success(food_id):
     
     #to prevent an error if the user inputs something other than an int
     try:
-        sell_amount = int(sell_amount) #atempts to convert to an int
+        sell_amount = int(sell_amount)
     except ValueError:
         sell_amount = 0   #sets to zero if a ValueError occurs 
-        
+    
+    #finds food item with same ID
     found_food = None
     for fooditem in food:
         if fooditem.id == food_id:
             found_food = fooditem
         
-    max_able_to_sell = found_food.stock #max able to sell is calculated before stock is reduced, used later on.
+    max_able_to_sell = found_food.stock #max able to sell is calculated before stock is reduced, used later on if needed.
     found_food.stock = found_food.stock - sell_amount #reduces stock buy amount sold
     
-    #added to prevent stock going into negitive values
-    if found_food.stock < 0:
-        found_food.stock = 0
     
     #If statment put in place to detect if user attempted to sell more stock than existed
-    if found_food.stock == 0:
-        found_food.sold = found_food.sold + max_able_to_sell #only counts the stock that was sold
+    if found_food.stock < 0:
+        found_food.stock = 0
+        found_food.sold = found_food.sold + max_able_to_sell #If so it only counts the stock that was sold
         if sell_amount == max_able_to_sell:
-            display_message = False
+            display_message = False #doesn't display warning message because exact amount entered was same as stock of that item
         else:        
-            display_message = True
+            display_message = True #displays warning message that number they entered was to large
     else:
         found_food.sold = found_food.sold + sell_amount #works as normal
         display_message = False
@@ -165,9 +164,9 @@ def stats():
     most_popular = "N/A"
     
     for food_objects in food:
-        total_profit = total_profit + food_objects.sold * food_objects.price
-        total_sold = total_sold + food_objects.sold
-        if food_objects.sold > most_popular_sold:
+        total_profit = total_profit + food_objects.sold * food_objects.price #total profit
+        total_sold = total_sold + food_objects.sold #total sold
+        if food_objects.sold > most_popular_sold: #most sold item
             most_popular_sold = food_objects.sold
             most_popular = food_objects.food_item
     data = dict (food_stats = [total_profit, total_sold, most_popular, most_popular_sold])
