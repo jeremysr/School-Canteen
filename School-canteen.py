@@ -12,6 +12,7 @@ class FoodItem:
         self.price = price
         self.sold = sold
 
+
 food = [
     FoodItem("Sushi roll Pack",5,7,0),
     FoodItem("Hot dog and chips",12,5,0),
@@ -143,10 +144,7 @@ def sell_item_success(food_id):
     if found_food.stock < 0:
         found_food.stock = 0
         found_food.sold = found_food.sold + max_able_to_sell #If so it only counts the stock that was sold
-        if sell_amount == max_able_to_sell:
-            display_message = False #doesn't display warning message because exact amount entered was same as stock of that item
-        else:        
-            display_message = True #displays warning message that number they entered was to large
+        display_message = True #displays warning message that number they entered was to large
     else:
         found_food.sold = found_food.sold + sell_amount #works as normal
         display_message = False
