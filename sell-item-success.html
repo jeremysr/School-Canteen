@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	%include('shared/head.html')
+	%include('shared/nav.html')
+	<body>
+		<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
+			<h5>Items sold successfully!</h5>
+			<p>New stock level for {{fooditem[0].food_item}}: <b>{{fooditem[0].stock}}</b></p>
+			%if fooditem[1] == True:
+				<h6><b>WARNING MESSAGE:</b> you input a number larger than we have in stock. <b>Only {{fooditem[2]}} items were sold</b><br>re-stock to sell more :(</h6>
+				<br>
+			%else:
+				<p>Everything went as planned<p>
+			%end
+				<a href="/stockinfo" class="btn waves-effect waves-light" style="background-color: #333;"><i class="material-icons left">trending_up</i>stock info</a>
+		
+		</div>
+	</body>
+</html>

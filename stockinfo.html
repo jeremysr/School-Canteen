@@ -3,6 +3,8 @@
 	%include('shared/head.html')
 	%include('shared/nav.html')
 	<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
+		<h5><b>Interactive Menu</b></h5>
+		This page displayes all information about each food item on the menu, you are able to click buttons to complete taskes. re-stock allowes you to adjust the stock level of said food item, take order allows you to sell a number of that food item.</p>
 		%for food in stock_list:
 			<div class="row">
 				<div class="card" style="background-color:#ADC4D6;">
@@ -11,8 +13,15 @@
 						<p>In sock: {{food.stock}}</p>
 						<p>Price: ${{food.price}}.00</p>
 						<p>Sold items: {{food.sold}}</p>
+						%if food.stock == 0:
+							<p><b>WARNING: ITEM IS OUT OF STOCK</b></p>
+						%end
 						<a href="/re-stock-item/{{food.id}}" class="waves-effect waves-light btn" style="background-color: #333; margin-top:10px;"><i class="material-icons left">file_download</i>Re-stock</a>
-						<a href="#" class="waves-effect waves-light btn" style="background-color: #333; margin-top:10px;"><i class="material-icons left">add_shopping_cart</i>Take order</a>
+						%if food.stock == 0:
+							<a href="/sell-item/{{food.id}}" class="waves-effect waves-light btn disabled" style="background-color: #333; margin-top:10px;"><i class="material-icons left">add_shopping_cart</i>Take order</a>
+						%else:
+							<a href="/sell-item/{{food.id}}" class="waves-effect waves-light btn" style="background-color: #333; margin-top:10px;"><i class="material-icons left">add_shopping_cart</i>Take order</a>
+						%end
 					</div>
 				</div>
 			</div>

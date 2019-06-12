@@ -5,17 +5,17 @@
 	<body>
 		<div class="container" style="width:50%; margin-top:10px; padding:25px; background-color:#E8F1F8;">
 			<a href="/stockinfo" class="btn waves-effect waves-light" style="background-color: #333;"><i class="material-icons left">arrow_back</i>Cancel</a>
-			<h4>Re-stock Page</h4>
-			<p>Adjust stock levels for:<b> {{fooditem.food_item}}</b></p>
+			<h4>Sell Item Page</h4>
+			<p>Item to be sold: <b>{{fooditem.food_item}}</b></p>
 			<p>current stock level: <b>{{fooditem.stock}}</b></p>
 			<div class="row">
-				<form class="col s12" action = "/re-stock-success/{{fooditem.id}}" method = "post">
+				<form class="col s12" action = "/sell-item-success/{{fooditem.id}}" method = "post">
 					<div class="row">
 						<div class="input-field col s12" style="width:40%;">
-							<p>Input re-stock quantity in the field below:</p>
-							<input style="background-color:#F1F6Fa;" id="re_stock" name="inp_re_stock" type="number" class="validate" required>
+							<p>Input quantity of {{fooditem.food_item}}(s) being sold in the field below:</p>
+							<input style="background-color:#F1F6Fa;" id="sell_item" name="inp_sell_item" type="number" class="validate" min="1" required>
 							<label for="number"></label>
-							<span class="helper-text">adjust the level of stock</span> 
+							<span class="helper-text">quantity being sold</span> 
 						</div>
 					</div>
 					<button class="btn waves-effect waves-light" style="background-color: #333;" type ="submit" name="action" >Submit</button>
