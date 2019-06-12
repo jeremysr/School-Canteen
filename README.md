@@ -18,3 +18,5 @@ Ver3.0 Added sell feature
 Ver3.1 add statistics page
 
 Ver3.2 Fixing bugs and finishing off Ver3
+
+Ver4.0 Add images and comment code
