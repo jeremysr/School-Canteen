@@ -1,25 +1,32 @@
-from bottle import run, route, view, get, post, request
+from bottle import run, route, view, get, post, request, static_file
 from itertools import count
 
 
 class FoodItem:
+    #gives ids to each food item
     _ids = count(0)
 
-    def __init__(self, food_item, stock, price, sold):
+    def __init__(self, food_item, stock, price, sold, image):
         self.id = next(self._ids)
         self.food_item = food_item
         self.stock = stock
         self.price = price
         self.sold = sold
+        self.image = image
 
 
 food = [
-    FoodItem("Sushi roll Pack",5,7,0),
-    FoodItem("Hot dog and chips",12,5,0),
-    FoodItem("Ham and cheese sandwich",4,4,0),
+    FoodItem("Sushi roll Pack",5,7,0,"/Assets/sushi-photo.jpg"),
+    FoodItem("Hot dog and chips",12,5,0,"/Assets/hotdog-photo.jpg"),
+    FoodItem("Ham and cheese sandwich",4,4,0,"/Assets/sandwich-photo.jpg"),
 ]
 
 
+
+#images
+@route('/Assets/<filename>')
+def server_static(filename):
+    return static_file(filename, root='./Assets')
 
 
 #pages
@@ -41,6 +48,7 @@ def stock_info():
 @route('/re-stock-item/<food_id>')
 @view('re-stock-item')
 def re_stock_item(food_id):
+    #when the user clicks on an item it give an id, this for loop finds what fooditem has that id
     food_id = int(food_id)
     found_food = None
     for fooditem in food:
@@ -62,6 +70,8 @@ def re_stock_success(food_id):
     except ValueError:
         resto = 0   #sets to zero if a ValueError occurs 
         
+       
+    #same finding food for loop as above
     found_food = None
     for fooditem in food:
         if fooditem.id == food_id:
@@ -93,13 +103,14 @@ def new_item_success():
         price = request.forms.get('price')
         price = int(price)
         sold = 0
+        image = "/Assets/placeholder.png"
         
         if stock < 0: #these are added to prevent negitive values.
             stock = 0
         if price < 0:
             price = 0
     
-        new_item = FoodItem(food_item, stock, price, sold)
+        new_item = FoodItem(food_item, stock, price, sold, image)
         food.append(new_item)
         
     except ValueError:
@@ -109,6 +120,7 @@ def new_item_success():
 @route('/sell-item/<food_id>')
 @view('sell-item')
 def sell_item(food_id):
+    #same found_food process using the id as above
     food_id = int(food_id)
     found_food = None
     for fooditem in food:
@@ -172,8 +184,5 @@ def stats():
 
 
     
-
-    
-
 
 run(host='0.0.0.0', port = 8080, reloader = True, debug = True)
