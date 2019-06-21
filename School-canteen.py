@@ -11,7 +11,7 @@ VER2.3 - fixing bugs from VER2 and finalizing it
 VER3.0 - added sell item feature
 VER3.1 - added statistics page and calculations
 VER3.2 - fixing bugs from VER3 and finalizing it
-VER4.0 - added images to stok info page
+VER4.0 - added images to stock info page
 """
 
 
@@ -74,7 +74,7 @@ def re_stock_item(food_id):
 # re-stock-success page, Added Ver2.1
 @route('/re-stock-success/<food_id>', method = "POST")
 @view('re-stock-success')
-# function what adjust stock level by number inputed
+# function that adjust stock level by number inputed
 def re_stock_success(food_id):
     food_id = int(food_id)
     restock = request.forms.get('inp_re_stock')
@@ -113,7 +113,7 @@ def new_item_success():
     
     # try/except ValueError to prevent internal server error from wrong input
     try:
-        # Requesting Values that were inputed, then converting them to intergers
+        # Requesting Values that were inputed, then converting them to ints
         food_item = request.forms.get('food_item')
         stock = request.forms.get('stock')
         stock = int(stock)
